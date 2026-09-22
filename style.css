@@ -1,0 +1,152 @@
+:root {
+  --primary-color: #2c3e50;
+  --card-bg: #ffffff;
+  --accent-color: #3498db;
+  --border-color: #cbd5e1;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8fafc;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+  text-align: center;
+}
+
+header h1 {
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+/* Tree Structure */
+.tree {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.tree ul {
+  padding-top: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.tree li {
+  text-align: center;
+  position: relative;
+  padding: 20px 10px 0 10px;
+}
+
+/* Connectors between generations */
+.tree li::before, .tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 2px solid var(--border-color);
+  width: 50%;
+  height: 20px;
+}
+
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid var(--border-color);
+}
+
+.tree li:only-child::after, .tree li:only-child::before {
+  display: none;
+}
+
+.tree li:only-child {
+  padding-top: 0;
+}
+
+.tree li:first-child::before, .tree li:last-child::after {
+  border: none;
+}
+
+.tree li:last-child::before {
+  border-right: 2px solid var(--border-color);
+  border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid var(--border-color);
+  width: 0;
+  height: 20px;
+}
+
+/* Member Cards */
+.person-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  padding: 12px 18px;
+  border-radius: 8px;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.person-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.person-card .name {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.person-card .dates {
+  font-size: 0.85em;
+  color: #64748b;
+}
+
+/* Modal Popup */
+.modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: left;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
